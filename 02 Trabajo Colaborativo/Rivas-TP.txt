@@ -1,0 +1,157 @@
+1-
+¿Qué es GitHub?
+Es una plataforma de desarrollo colaborativo basada en la nube que utiliza el sistema de
+control de versiones Git. ¿Cómo crear un repositorio en GitHub?
+Para crear un repositorio, debemos ir al apartado que dice new repository o new y seguir los
+pasos que indica. Es necesario ponerle un nombre al repositorio y realizar los comandos. git init (solo se hace una vez, la primera vez que se crea el repositorio)
+git add . git commit -m “nombre del commit” git brunch -M main (se guarda en la rama ppal main)
+git remote add origin (direccion del repositorio)
+git push origin main (se pushea a la rama main)
+¿Cómo crear una rama git?
+Se crea con el comando:
+Git branch nombre_de_la_rama
+En la terminal. ¿Cómo cambiar a una rama en Git?
+Usando el comando:
+git checkout nombre_de_la_rama
+En la terminal. ¿Cómo fusionar ramas en Git?
+Para fusionar las ramas, primero nos posicionamos en la rama main y usamos el comando enla terminal: git merge nombre_de_la_rama, esto hace que se agregue a la rama ppal main y
+puedan fusionarse. ¿Cómo crear un commit en Git?
+Cunado hacemos algún cambio en nuestro código y queremos guardarlo, usamos una seriedecomandos: primero usamos git add . cuando queremos guardar todos los cambios y ahi
+hacemos un git commit -m “con el nombre del commit”, luego lo pusheamos usando git push-u¿Qué es un repositorio remoto?
+Es una versión del proyecto que está alojada en un servidor externo (generalmente en
+plataformas como GitHub, GitLab o Bitbucket) y a la que pueden acceder múltiples
+colaboradores. ¿Cómo agregar un repositorio remoto a Git?
+Un repositorio se crea, no se agrega. Se pueden agrgar los cambios realizados. para enviar un commit haces git commit en la terminal para pushear un repositorio haces git
+push en la terminal. Commit registra los cambios en el repositorio y el push actualiza el
+repositorio remoto
+¿Cómo empujar cambios a un repositorio remoto?
+Utilizando el comando git push -u, los cambios se pushean al repositorio de github. ¿Cómo tirar de cambios de un repositorio remoto?
+Usando el comando git pull origin main o git pull si la rama local ya está vinculada al remoto. ¿Qué es un fork de repositorio?
+Es una copia del repositorio original que se aloja en la cuenta de github. Permite modificar el
+proyecto original sin afectarlo directamente
+¿Cómo crear un fork de un repositorio?
+Para crearlo hay que entrar al repositorio original de github y hacer click en Fork, el botón
+suele estar arriba a la derecha y con eso se crea una copia del repo. ¿Cómo enviar una solicitud de extracción (pull request) a un repositorio?
+Un pull request (solicitud de extracción) es una petición para que el dueño de un repositorio
+revise y acepte tus cambios. 1. Ir a la página principal del repositorio
+2. Seleccionar la rama que contiene las confirmaciones
+3. En el banner amarillo, hacer clic en "Comparar y solicitud de incorporación de cambios" 4. Seleccionar la rama base y la rama de comparación
+5. Escribir un título y una descripción
+6. Hacer clic en "Crear solicitud de incorporación de cambios" ¿Cómo aceptar una solicitud de extracción?
+En GitHub, para aceptar una solicitud de extracción, los propietarios y administradores del
+repositorio pueden fusionarla. Pasos para fusionar una solicitud de extracción:
+1. Verificar que se hayan cumplido todas las revisiones requeridas
+2. Verificar que no haya ninguna revisión pendiente o rechazada
+3. Fusionar la solicitud de extracción
+¿Qué es un etiqueta en Git?
+Git tiene la posibilidad de etiquetar puntos específicos del historial como importantes, es unareferencia que señala un punto específico en el historial de un repositorio. Esta funcionalidadse usa típicamente para marcar versiones de lanzamiento (v1.0, por ejemplo). ¿Cómo crear una etiqueta en Git?
+Se escribe el comando git tag seguido del nombre de la etiqueta. Por ejemplo, git tag v1.4. Crear Etiquetas
+Git utiliza dos tipos principales de etiquetas: ligeras y anotadas. Una etiqueta ligera es muy parecido a una rama que no cambia - simplemente es un punteroaun commit específico. Sin embargo, las etiquetas anotadas se guardan en la base de datos de Git como objetos
+enteros. Tienen un checksum; contienen el nombre del etiquetador, correo electrónico y fecha;
+tienen un mensaje asociado; y pueden ser firmadas y verificadas con GNU Privacy Guard
+(GPG). Normalmente se recomienda que crees etiquetas anotadas, de manera que tengas
+toda esta información; pero si quieres una etiqueta temporal o por alguna razón no estás
+interesado en esa información, entonces puedes usar las etiquetas ligeras. Etiquetas Anotadas
+Crear una etiqueta anotada en Git es sencillo. La forma más fácil de hacerlo es especificar laopción -a cuando ejecutas el comando git tag:
+$ git tag -a v1.4 -m 'my version 1.4' $ git tag
+v0.1
+v1.3
+v1.4
+La opción -m especifica el mensaje de la etiqueta, el cual es guardado junto con ella. Si no
+especificas el mensaje de una etiqueta anotada, Git abrirá el editor de texto para que lo
+escribas. Etiquetas Ligeras
+La otra forma de etiquetar un commit es mediante una etiqueta ligera. Una etiqueta ligera noes más que el checksum de un commit guardado en un archivo - no incluye más información. Para crear una etiqueta ligera, no pases las opciones -a, -s ni -m:
+$ git tag v1.4-lw
+$ git tag
+v0.1
+v1.3
+v1.4
+v1.4-lw
+v1.5
+¿Cómo enviar una etiqueta a GitHub?
+Por defecto, el comando git push no transfiere las etiquetas a los servidores remotos. Debes
+enviar las etiquetas de forma explícita al servidor luego de que las hayas creado. Este procesoes similar al de compartir ramas remotas - puedes ejecutar git push origin [etiqueta]. $ git push origin v1.5
+Counting objects: 14, done. Delta compression using up to 8 threads. Compressing objects: 100% (12/12), done. Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done. Total 14 (delta 3), reused 0 (delta 0)
+To git@github.com:schacon/simplegit.git * [new tag] v1.5 -> v1.5
+Si quieres enviar varias etiquetas a la vez, puedes usar la opción --tags del comando git push. Esto enviará al servidor remoto todas las etiquetas que aun no existen en él. $ git push origin --tags
+Counting objects: 1, done. Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, done. Total 1 (delta 0), reused 0 (delta 0)
+To git@github.com:schacon/simplegit.git * [new tag] v1.4 -> v1.4
+* [new tag] v1.4-lw -> v1.4-lw
+Por lo tanto, cuando alguien clone o traiga información de tu repositorio, también obtendrá
+todas las etiquetas. ¿Qué es un historial de Git?
+El historial de Git es un registro de los cambios realizados en un repositorio de código, almacenado como un gráfico de instantáneas. A estas instantáneas se les llama
+confirmaciones. ¿Cómo ver el historial de Git?
+La herramienta más básica y potente para hacer esto es el comando git log. Estos ejemplos usan un proyecto muy sencillo llamado “simplegit”. Para clonar el proyecto, ejecuta:
+git clone https://github.com/schacon/simplegit-progit
+Cuando ejecutes git log sobre este proyecto, deberías ver una salida similar a esta:
+$ git log
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon <schacon@gee-mail.com>
+Date: Mon Mar 17 21:52:11 2008 -0700
+changed the version number
+commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+Author: Scott Chacon <schacon@gee-mail.com>
+Date: Sat Mar 15 16:40:33 2008 -0700
+removed unnecessary test
+commit a11bef06a3f659402fe7563abf99ad00de2209e6
+Author: Scott Chacon <schacon@gee-mail.com>
+Date: Sat Mar 15 10:31:28 2008 -0700
+first commit
+Por defecto, si no pasas ningún parámetro, git log lista las confirmaciones hechas sobre eserepositorio en orden cronológico inverso. Es decir, las confirmaciones más recientes se
+muestran al principio. Como puedes ver, este comando lista cada confirmación con su sumade comprobación SHA-1, el nombre y dirección de correo del autor, la fecha y el mensaje deconfirmación. ¿Cómo buscar en el historial de Git?
+Para buscar en el historial de Git, puedes usar el comando git log o buscar en la interfaz de
+usuario de GitHub o GitLab. Usar git log
+git log es la herramienta básica para ver el historial de Git. git log -L muestra el historial de una función o línea de código. Buscar en la interfaz de usuario de GitHub
+Navega a la página del repositorio del archivo que quieres ver. Haz clic en el archivo. Selecciona "Historial" en la esquina superior derecha. Haz clic en la confirmación que quieres revisar. Si hay varios archivos en la confirmación, haz clic en un archivo individual para ver los
+cambios. Buscar en la interfaz de usuario de GitLab
+En la barra lateral izquierda, selecciona Buscar o busca tu proyecto. Selecciona Código > Repositorio. Busca el archivo deseado en el repositorio. Ver el historial de cambios en un repositorio
+Puedes usar la vista de actividad para ver un historial detallado de cambios en el repositorio. ¿Cómo borrar el historial de Git?
+Para borrar el historial de Git localmente, puedes eliminar la carpeta .git. Si ya has subido el
+repositorio remoto, el historial permanecerá allí. Para eliminar un archivo del historial de Git, puedes reescribir la historia del repositorio. Paraello, puedes usar herramientas como git filter-repo o BFG Repo-Cleaner. Borrar la carpeta .git
+Busca y encuentra la carpeta .git en la raíz de tu carpeta. Elimina la carpeta. Vuelve a crear la carpeta con el mismo nombre. Usar git filter-repo
+Instala git filter-repo usando brew para macOS o pip. Usa el siguiente comando en tu terminal: git filter-repo --path ./web/.env --invert-paths.
+Actualiza tu repositorio remoto. ¿Qué es un repositorio privado en GitHub?
+Un repositorio privado en GitHub es un espacio donde se puede guardar código, archivos y
+revisiones de forma segura. Solo el usuario que lo crea y los colaboradores a los que invite
+podrán acceder a él. ¿Cómo crear un repositorio privado en GitHub?
+1. Ir a la esquina superior derecha de cualquier página de GitHub
+2. Seleccionar Nuevo repositorio
+3. Escribir un nombre para el repositorio
+4. Agregar una descripción opcional
+5. Elegir la visibilidad del repositorio
+6. Seleccionar Crear repositorio
+¿Cómo invitar a alguien a un repositorio privado en GitHub?
+1. Ir al repositorio
+2. Hacer clic en Configuración
+3. En la barra lateral, hacer clic en Colaboradores y equipos
+4. Debajo de Administrar acceso, hacer clic en Agregar personas
+5. Escribir el nombre de la persona a invitar en el campo de búsqueda
+6. Hacer clic en un nombre de la lista de coincidencias
+7. Hacer clic en Añadir NOMBRE al REPOSITORIO
+La persona invitada recibirá un correo electrónico invitándola al repositorio. Una vez que
+acepte la invitación, tendrá acceso de colaborador a tu repositorio. ¿Qué es un repositorio público en GitHub?
+Un repositorio público en GitHub es un espacio virtual donde se puede almacenar y compartir
+código, archivos y revisiones de forma gratuita y accesible para cualquier persona en internet. Los repositorios públicos de GitHub se utilizan con frecuencia para compartir software de
+código abierto. Para que el software sea realmente de código abierto, se debe generar una
+licencia que permita a otras personas usar, modificar y distribuir el software. ¿Cómo crear un repositorio público en GitHub?
+1. Iniciar sesión en GitHub
+2. En la esquina superior derecha, seleccionar Nuevo repositorio
+3. Escribir un nombre para el repositorio
+4. Añadir una descripción opcional
+5. Elegir la visibilidad del repositorio
+6. Seleccionar Inicializar este repositorio con un archivo Léame
+7. Hacer clic en Crear repositorio
+¿Cómo compartir un repositorio público en GitHub?
+Invitar colaboradores
+1. Ir a la página principal del repositorio
+2. Hacer clic en Configuración
+3. En la barra lateral, hacer clic en Colaboradores y equipos
+4. Hacer clic en Agregar personas o Agregar equipos
+5. Seleccionar el rol de repositorio que quieres conceder
+6. Hacer clic en Agregar NOMBRE al REPOSITORIO
+Cambiar la visibilidad del repositorio
+1. Ir a la página principal del repositorio
+2. Hacer clic en Configuración
+3. En la sección "Zona de peligro", hacer clic en Cambiar visibilidad
+4. Seleccionar Público
+5. Hacer clic en Lo entiendo, cambia la visibilidad del repositorio
